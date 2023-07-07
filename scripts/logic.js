@@ -3,6 +3,7 @@ var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
 var timer;
 var timerCount;
+i = 0
 
  //write response and time remaining value to highscortes
 function startQuiz(){
@@ -31,18 +32,26 @@ function startTimer() {
 }
 function getQuestion(){
     //pull next question from questions array and then check if user choice is correct
+    document.querySelector(".quiz-question").innerHTML = questions[i].question 
+    document.querySelector(".a1").innerHTML = answers[i].a1
+    document.querySelector(".a2").innerHTML = answers[i].a2
+    document.querySelector(".a3").innerHTML = answers[i].a3
+    document.querySelector(".a4").innerHTML = answers[i].a4
+    
   checkCorrect()
 }
 
 
 function checkCorrect(){
     // if choice matches correct answer display correct then call next question
-    if (question1.correctAnswer === userChoice) {
+    if (answers[i] === userChoice) {
       quizQuestion.textContent = "CORRECT!"
+      i++;
       getQuestion()
     }
     else {
       wrong()
+      i++;
       getQuestion()
     }
 }
