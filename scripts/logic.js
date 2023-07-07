@@ -19,6 +19,18 @@ subtitle.style.display = "none"
   timerCount = 60;
   // Prevents start button from being clicked when round is in progress
   startButton.disabled = true;
+    var a1 = document.createElement("button");
+    a1.setAttribute("class", "a1");
+    quizAnswer.appendChild(a1);
+    var a2 = document.createElement("button");
+    a2.setAttribute("class", "a2");
+    quizAnswer.appendChild(a2);
+    var a3 = document.createElement("button");
+    a3.setAttribute("class", "a3");
+    quizAnswer.appendChild(a3);
+    var a4 = document.createElement("button");
+    a4.setAttribute("class", "a4");
+    quizAnswer.appendChild(a4);
   getQuestion()
   startTimer()
 }
@@ -39,7 +51,7 @@ function startTimer(){
 
 function getQuestion(){
     //pull next question from questions array and then check if user choice is correct
-
+    
   document.querySelector(".quiz-question").innerHTML = questions[i].question 
   document.querySelector(".a1").innerHTML ="1. " + questions[i].a1
   document.querySelector(".a2").innerHTML = "2. " + questions[i].a2
