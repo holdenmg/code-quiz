@@ -35,4 +35,31 @@ var question3 = {
     correctAnswer: "a4"
 };
 
-var questions = [question1, question2, question3];
+var question4 = {
+    question: "Which of these correctly builds an empty array in javaScript?" ,
+    a1:"newArray=()",
+    a2:"newArray={}",
+    a3:"newArray=<>",
+    a4:"newArray=[]",
+    correctAnswer: "a4"
+};
+
+var question5 = {
+    question: "Which of these correctly builds an empty array in javaScript?" ,
+    a1:"newArray=()",
+    a2:"newArray={}",
+    a3:"newArray=<>",
+    a4:"newArray=[]",
+    correctAnswer: "a4"
+};
+
+var question6 = {
+    question: "Which of these correctly builds an empty array in javaScript?" ,
+    a1:"newArray=()",
+    a2:"newArray={}",
+    a3:"newArray=<>",
+    a4:"newArray=[]",
+    correctAnswer: "a4"
+};
+
+var questions = [question1, question2, question3, question4, question5, question6];

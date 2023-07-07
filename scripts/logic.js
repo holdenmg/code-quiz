@@ -4,7 +4,8 @@ var startButton = document.querySelector(".start-button");
 var quizAnswer = document.querySelector(".quiz-answers");
 var timer;
 var timerCount;
-i = 0
+var i = 0;
+var highScores = [];
 
  //write response and time remaining value to highscortes
 function startQuiz(){
@@ -18,7 +19,7 @@ function startQuiz(){
 }
 
 
-function startTimer() {
+function startTimer(){
     // Sets timer
   timer = setInterval(function() {
     timerCount--;
@@ -33,14 +34,17 @@ function startTimer() {
 }
 function getQuestion(){
     //pull next question from questions array and then check if user choice is correct
+
     document.querySelector(".quiz-question").innerHTML = questions[i].question 
-    document.querySelector(".a1").innerHTML = questions[i].a1
-    document.querySelector(".a2").innerHTML = questions[i].a2
-    document.querySelector(".a3").innerHTML = questions[i].a3
-    document.querySelector(".a4").innerHTML = questions[i].a4
-   
-  checkCorrect()
+    document.querySelector(".a1").innerHTML ="1. " + questions[i].a1
+    document.querySelector(".a2").innerHTML = "2. " + questions[i].a2
+    document.querySelector(".a3").innerHTML = "3. " + questions[i].a3
+    document.querySelector(".a4").innerHTML = "4. " + questions[i].a4
+    console.log("xxxxxxxxxxxxxxxxxxxxxxx");
+    
+    
 }
+
 
 
 function checkCorrect(){
@@ -49,22 +53,23 @@ function checkCorrect(){
       var userChoice = event.target;
       userAnswer = userChoice.getAttribute("class")
       console.log(userAnswer);
-      console.log(questions[i].correctAnswer);
       if (questions[i].correctAnswer === userAnswer) {
-        console.log("correct");
-        quizQuestion.textContent = "CORRECT!"
-        i++;
-        getQuestion()
+          quizQuestion.textContent = "CORRECT!"
       }
       else{
-        console.log("wrong")
-        wrong()
-        i++;
-        getQuestion()
+          wrong()
       }
+      i++
+      if(i === questions.length){
+        gameOver();
+      }
+      else{
+        getQuestion();
+      }
+      }); 
+    }
   
-    });
-  }
+   
     
 
 
@@ -79,10 +84,16 @@ quizQuestion.textContent = "WRONG!";
 function gameOver(){
 
     //stop the question function log score - read interval value and request initisald from user
+    quizQuestion.textContent = "That's all!";
+    gameOverMessage = document.createElement("h4");
+    quizQuestion.appendChild(gameOverMessage);
+    gameOverMessage.textContent = "Your score is: " + timerCount;
+    clearInterval(timer);
 
  //write response and time remaining value to highscortes
-
+    
  // ask if you want to play again
 }
 
 startButton.addEventListener("click", startQuiz);
+checkCorrect();
