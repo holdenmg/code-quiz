@@ -51,13 +51,13 @@ function checkCorrect(){
       console.log(userAnswer);
       console.log(questions[i].correctAnswer);
       if (questions[i].correctAnswer === userAnswer) {
-        console.log(correct);
+        console.log("correct");
         quizQuestion.textContent = "CORRECT!"
         i++;
         getQuestion()
       }
-      if (userAnswer != questions[i].correctAnswer){
-        console.log(wrong)
+      else{
+        console.log("wrong")
         wrong()
         i++;
         getQuestion()
