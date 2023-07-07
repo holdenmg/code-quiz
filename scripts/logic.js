@@ -1,6 +1,7 @@
 var quizQuestion= document.querySelector(".quiz-question");
 var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
+var quizAnswer = document.querySelector(".quiz-answers");
 var timer;
 var timerCount;
 i = 0
@@ -23,38 +24,48 @@ function startTimer() {
     timerCount--;
     timerElement.textContent = timerCount;
     // Tests if time has run out
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
       // Clears interval
       clearInterval(timer);
       gameOver();
     }
-  }, 6000);
+  }, 1000);
 }
 function getQuestion(){
     //pull next question from questions array and then check if user choice is correct
     document.querySelector(".quiz-question").innerHTML = questions[i].question 
-    document.querySelector(".a1").innerHTML = answers[i].a1
-    document.querySelector(".a2").innerHTML = answers[i].a2
-    document.querySelector(".a3").innerHTML = answers[i].a3
-    document.querySelector(".a4").innerHTML = answers[i].a4
-    
+    document.querySelector(".a1").innerHTML = questions[i].a1
+    document.querySelector(".a2").innerHTML = questions[i].a2
+    document.querySelector(".a3").innerHTML = questions[i].a3
+    document.querySelector(".a4").innerHTML = questions[i].a4
+   
   checkCorrect()
 }
 
 
 function checkCorrect(){
     // if choice matches correct answer display correct then call next question
-    if (answers[i] === userChoice) {
-      quizQuestion.textContent = "CORRECT!"
-      i++;
-      getQuestion()
-    }
-    else {
-      wrong()
-      i++;
-      getQuestion()
-    }
-}
+    quizAnswer.addEventListener("click", function(event) {
+      var userChoice = event.target;
+      userAnswer = userChoice.getAttribute("class")
+      console.log(userAnswer);
+      console.log(questions[i].correctAnswer);
+      if (questions[i].correctAnswer === userAnswer) {
+        console.log(correct);
+        quizQuestion.textContent = "CORRECT!"
+        i++;
+        getQuestion()
+      }
+      if (userAnswer != questions[i].correctAnswer){
+        console.log(wrong)
+        wrong()
+        i++;
+        getQuestion()
+      }
+  
+    });
+  }
+    
 
 
 function wrong(){
