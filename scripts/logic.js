@@ -1,49 +1,58 @@
-
+var quizQuestion= document.querySelector(".quiz-question");
+var timerElement = document.querySelector(".timer-count");
+var startButton = document.querySelector(".start-button");
+var timer;
+var timerCount;
 
  //write response and time remaining value to highscortes
 function startQuiz(){
-//on press of start, call start timer and call nextQuestion to display first question
+//on press of start, call start timer and call getQuestion to display first question
 
-
-
+  timerCount = 60;
+  // Prevents start button from being clicked when round is in progress
+  startButton.disabled = true;
+  getQuestion()
+  startTimer()
 }
+
 
 function startTimer() {
     // Sets timer
   timer = setInterval(function() {
     timerCount--;
     timerElement.textContent = timerCount;
-    if (timerCount >= 0) {
-      // Tests if win condition is met
-      if (isWin && timerCount > 0) {
-        // Clears interval and stops timer
-        clearInterval(timer);
-        winGame();
-      }
-    }
     // Tests if time has run out
     if (timerCount === 0) {
       // Clears interval
       clearInterval(timer);
-      loseGame();
+      gameOver();
     }
-  }, 1000);
+  }, 6000);
 }
-function nextQuestion(){
-    //pull next question from questions array
-
+function getQuestion(){
+    //pull next question from questions array and then check if user choice is correct
+  checkCorrect()
 }
 
 
-function correct(){
-    //call next question
-
+function checkCorrect(){
+    // if choice matches correct answer display correct then call next question
+    if (question1.correctAnswer === userChoice) {
+      quizQuestion.textContent = "CORRECT!"
+      getQuestion()
+    }
+    else {
+      wrong()
+      getQuestion()
+    }
 }
 
 
 function wrong(){
 // deduct time from timer
-//call next question
+timerCount = timerCount -  10;
+quizQuestion.textContent = "WRONG!";
+
 
 }
 
@@ -55,3 +64,5 @@ function gameOver(){
 
  // ask if you want to play again
 }
+
+startButton.addEventListener("click", startQuiz);
