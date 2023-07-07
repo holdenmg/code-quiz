@@ -62,25 +62,8 @@ var question6 = {
     correctAnswer: "a1"
 };
 
+
 var question7 = {
-    question: "Which is the proper syntax for adding a list item to HTML?" ,
-    a1:"<list>",
-    a2:"<li>",
-    a3:"list-item",
-    a4:"<list-item>",
-    correctAnswer: "a2"
-};
-
-var question8 = {
-    question: "Which of these would be largest on the screen (assuming no styling)?" ,
-    a1:"<h1>",
-    a2:"<h2>",
-    a3:"<h3>",
-    a4:"<h4>",
-    correctAnswer: "a1"
-};
-
-var question9 = {
     question: "Which of these correctly demonstrates proper variable naming conventions in JavaScript?" ,
     a1:"newArray",
     a2:"newarray",
@@ -89,7 +72,7 @@ var question9 = {
     correctAnswer: "a1"
 };
 
-var question10 = {
+var question8 = {
     question: "Which of these demonstrates proper syntax for a 'for' loop?" ,
     a1:"for{let i= 1 , i <= 100; i++}{//some code here//}",
     a2:"for (let i = 1; i <= 100; i++){//some code here//}",
@@ -97,4 +80,4 @@ var question10 = {
     a4:"for (let i = 1; i <= 100; i++)(//some code here//)",
     correctAnswer: "a2"
 };
-var questions = [question1, question2, question3, question4, question5, question6];
+var questions = [question1, question2, question3, question4, question5, question6, question7, question8];
