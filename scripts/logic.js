@@ -3,6 +3,7 @@ var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
 var scoresButton = document.querySelector(".scores-button");
 var backButton = document.querySelector(".back-button")
+var clearButton = document.querySelector(".clear-button")
 var quizAnswer = document.querySelector(".quiz-answers");
 var title = document.querySelector(".title");
 var subtitle = document.querySelector(".subtitle");
@@ -107,6 +108,7 @@ function gameOver(){
   playerScore = timerCount;
   gameWindow.classList.add("hidden");
    hideForm.classList.add("show");
+   timerElement.classList.add("hidden")
 }
 
 
@@ -148,6 +150,7 @@ scoreForm.addEventListener("submit", function(event) {
   storeScores();
   renderScores();
   hideForm.classList.remove("show");
+  init();
 });
 
 function back(){
@@ -160,10 +163,18 @@ function back(){
 
 }
 
+function clearScores(){
+  while( highScoreList.firstChild ){
+    highScoreList.removeChild( highScoreList.firstChild );
+    scores = [];
+    storeScores();
+  }
+}
+
 
 //------------ start-----------------------//
 startButton.addEventListener("click", startQuiz);
 checkCorrect();
 scoresButton.addEventListener("click", init);
-//clearButton.addEventListener("click", clearScores)
+clearButton.addEventListener("click", clearScores)
 backButton.addEventListener("click", back);
