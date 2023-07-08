@@ -8,7 +8,7 @@
 //CA:
 
 var question1 = {
-    question: "To out put a message to the web console you would use what method? " ,
+    question: "To output a message to the web console you would use what method? " ,
     a1:"print.out()",
     a2:"console.log()",
     a3:"output()",

@@ -1,8 +1,31 @@
+body{
+    font-family: monospace;
+}
+
+.timer{
+    font-family: monospace;
+    font-size: 100px;
+    float: right;
+    color: red
+}
+.button{
+    background-color: blueviolet;
+    border-radius: 30px;
+    font-family: monospace;
+}
+
 .hidden{
     display: none;
 }
 
 .show{
     display: block;
-    font-family: 'Courier New', Courier, monospace;
+    
 };
+
+.message{
+    font-size: 100px;
+    color: grey
+}
+
+

@@ -27,6 +27,8 @@ function startQuiz(){
 startButton.style.display = "none"
 title.style.display = "none"
 subtitle.style.display = "none"
+timerElement.classList.remove("hidden")
+scoresButton.classList.add("hidden")
   timerCount = 60;
   // Prevents start button from being clicked when round is in progress
   startButton.disabled = true;
@@ -53,7 +55,7 @@ function startTimer(){
     timerElement.textContent = timerCount;
     // Tests if time has run out
     if (timerCount <= 0) {
-      // Clears interval
+      timerCount == 0;
       clearInterval(timer);
       gameOver();
     }
@@ -109,6 +111,7 @@ function gameOver(){
   gameWindow.classList.add("hidden");
    hideForm.classList.add("show");
    timerElement.classList.add("hidden")
+   scoresButton.classList.add("hidden");
 }
 
 

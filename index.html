@@ -10,15 +10,15 @@
     <header>
         <div class="timer">
             
-            <div class="timer-count"> 60</div>
+            <div class="timer-count hidden"> 60</div>
           </div>
-          <button class="scores-button">View High Scores</button>
+          <button class="scores-button button">View High Scores</button>
     </header>
     <main>
       <section id = game-window>
         <h1 class= "title">Code Quiz</h1>
         <h4 class="subtitle">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</h4>
-        <button class="start-button">Start Quiz</button>
+        <button class="start-button button">Start Quiz</button>
         <div class="card quiz-question">
         </div>
         <div class="card quiz-answers">
@@ -27,17 +27,20 @@
           <h2 class="message"></h2>
         </div>
       </section>
-      <div id = "hide-form" class = "hidden">  
+     
+      <div id = "hide-form" class = "hidden"> 
+        <h1 class = "title"> All done!</h1> 
         <form id="score-form" method="POST">
           <label for="score-text">Enter Initials: </label>
           <input type="text"  name="score-text" id="score-text" />
         </form>
       </div>
+
       <section id="scores" class ="hidden">
         <h1 class = "title"> HIGH SCORES</h1>
-      <ul id = high-score-list ></ul>
-      <button class="back-button ">Back to game</button>
-      <button class="clear-button ">Clear Scores</button>
+        <ul id = high-score-list ></ul>
+        <button class="back-button button ">Back to game</button>
+        <button class="clear-button button ">Clear Scores</button>
       </section>
 
     </main>
