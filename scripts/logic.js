@@ -11,14 +11,14 @@ var message = document.querySelector(".message");
 var gameWindow = document.querySelector("#game-window");
 var gameOverMessage = document.querySelector(".gameOverMessage")
 var hideForm = document.getElementById("hide-form")
-var scores = [];
 var scoreInput = document.querySelector("#score-text");
 var scoreForm = document.querySelector("#score-form");
-var scoreSection = document.querySelector("#scores");
+var scoreSection = document.querySelector("#scores-section");
 var highScoreList = document.querySelector("#high-score-list");
 var timer;
 var timerCount;
 var i = 0;
+var scores = [];
 
 
  
@@ -32,16 +32,16 @@ scoresButton.classList.add("hidden")
   timerCount = 60;
   startButton.disabled = true;
     var a1 = document.createElement("button");
-    a1.setAttribute("class", "a1");
+    a1.setAttribute("class", "a1 button");
     quizAnswer.appendChild(a1);
     var a2 = document.createElement("button");
-    a2.setAttribute("class", "a2");
+    a2.setAttribute("class", "a2 button");
     quizAnswer.appendChild(a2);
     var a3 = document.createElement("button");
-    a3.setAttribute("class", "a3");
+    a3.setAttribute("class", "a3 button");
     quizAnswer.appendChild(a3);
     var a4 = document.createElement("button");
-    a4.setAttribute("class", "a4");
+    a4.setAttribute("class", "a4 button");
     quizAnswer.appendChild(a4);
   getQuestion()
   startTimer()
@@ -68,7 +68,7 @@ function getQuestion(){
   document.querySelector(".a1").innerHTML ="1. " + questions[i].a1
   document.querySelector(".a2").innerHTML = "2. " + questions[i].a2
   document.querySelector(".a3").innerHTML = "3. " + questions[i].a3
-  document.querySelector(".a4").innerHTML = "4. " + questions[i].a4  
+  document.querySelector(".a4").innerHTML = "4. " + questions[i].a4 
 }
 
 function checkCorrect(){
@@ -141,21 +141,21 @@ function init() {
 }
 
 function storeScores() {
-  // Stringify and set key in localStorage to todos array
+  // Stringify and store in local storage
   localStorage.setItem("scores", JSON.stringify(scores));
 }
 
 scoreForm.addEventListener("submit", function(event) {
   event.preventDefault();
-  var scoreText = scoreInput.value.trim() + " Score: " + playerScore;
+  var scoreText = scoreInput.value.trim(); + " Score: " + playerScore;
   scores.push(scoreText);
-  scoreInput.value = ""
+  //scoreInput.value = ""
   storeScores();
   renderScores();
   hideForm.classList.remove("show");
   init();
 });
-
+//takes you back to start quiz
 function back(){
   scoreSection.classList.add("hidden");
   gameWindow.classList.remove("hidden");
@@ -165,7 +165,7 @@ function back(){
   location.reload();
 
 }
-
+//clear stored scores
 function clearScores(){
   while( highScoreList.firstChild ){
     highScoreList.removeChild( highScoreList.firstChild );
