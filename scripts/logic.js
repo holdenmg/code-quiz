@@ -1,17 +1,19 @@
 var quizQuestion= document.querySelector(".quiz-question");
 var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
+var scoresButton = document.querySelector(".scores-button");
+var backButton = document.querySelector(".back-button")
 var quizAnswer = document.querySelector(".quiz-answers");
 var title = document.querySelector(".title");
 var subtitle = document.querySelector(".subtitle");
 var message = document.querySelector(".message");
 var gameWindow = document.querySelector("#game-window");
-
 var gameOverMessage = document.querySelector(".gameOverMessage")
 var hideForm = document.getElementById("hide-form")
 var scores = [];
-var initialInput = document.querySelector("#initial-text");
+var scoreInput = document.querySelector("#score-text");
 var scoreForm = document.querySelector("#score-form");
+var scoreSection = document.querySelector("#scores");
 var highScoreList = document.querySelector("#high-score-list");
 var timer;
 var timerCount;
@@ -100,6 +102,15 @@ function wrong(){
   }
 }
 
+function gameOver(){
+  //hide game window and display score input form
+  playerScore = timerCount;
+  gameWindow.classList.add("hidden");
+   hideForm.classList.add("show");
+}
+
+
+//--------------score inputing and storing------------//
 function renderScores() {
   highScoreList.innerHTML = "";
   for (var i = 0; i < scores.length; i++) {
@@ -110,7 +121,13 @@ function renderScores() {
     highScoreList.appendChild(li);
   }
 }
+
 function init() {
+  scoreSection.classList.remove("hidden");
+  gameWindow.classList.add("hidden");
+  backButton.classList.remove("hidden");
+  scoresButton.classList.add("hidden");
+  timerElement.classList.add("hidden")
   var storedScores = JSON.parse(localStorage.getItem("scores"));
   if (storedScores !== null) {
     scores = storedScores;
@@ -118,28 +135,35 @@ function init() {
   renderScores();
 }
 
-
-
-
-function gameOver(){
-    
-    //stop the question function log score - read interval value and request initisald from user
-    
-    console.log("heyyy")
-    
-    //gameOverMessage.textContent = "That's all!";
-    gameWindow.classList.add("hidden");
-    hideForm.classList.add("show");
-    
-   // gameOverMessage = document.createElement("h4");
-    //quizQuestion.appendChild(gameOverMessage);
-    //gameOverMessage.textContent = "Your score is: " + timerCount;
-    //clearInterval(timer);
-
- //write response and time remaining value to highscortes
-    
- // ask if you want to play again
- 
+function storeScores() {
+  // Stringify and set key in localStorage to todos array
+  localStorage.setItem("scores", JSON.stringify(scores));
 }
+
+scoreForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  var scoreText = scoreInput.value.trim() + " Score: " + playerScore;
+  scores.push(scoreText);
+  scoreInput.value = ""
+  storeScores();
+  renderScores();
+  hideForm.classList.remove("show");
+});
+
+function back(){
+  scoreSection.classList.add("hidden");
+  gameWindow.classList.remove("hidden");
+  backButton.classList.add("hidden");
+  scoresButton.classList.remove("hidden");
+  timerElement.classList.remove("hidden")
+  location.reload();
+
+}
+
+
+//------------ start-----------------------//
 startButton.addEventListener("click", startQuiz);
 checkCorrect();
+scoresButton.addEventListener("click", init);
+//clearButton.addEventListener("click", clearScores)
+backButton.addEventListener("click", back);

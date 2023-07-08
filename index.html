@@ -9,9 +9,10 @@
   <body>
     <header>
         <div class="timer">
-            <div class="timer-count">60</div>
+            <div> Time remaining:</div>
+            <div class="timer-count"> 60</div>
           </div>
-      <a href="highscores.html">VIEW HIGH SCORES</a>
+          <button class="scores-button">View High Scores</button>
     </header>
     <main>
       <section id = game-window>
@@ -28,13 +29,17 @@
       </section>
       <div id = "hide-form" class = "hidden">  
         <form id="score-form" method="POST">
-          <label for="initals-text">Enter Initials: </label>
-          <input type="text"  name="todo-text" id="todo-text" />
+          <label for="score-text">Enter Initials: </label>
+          <input type="text"  name="score-text" id="score-text" />
         </form>
       </div>
+      <section id="scores" class ="hidden">
+        <h1 class = "title"> HIGH SCORES</h1>
+      <ul id = high-score-list ></ul>
+      <button class="back-button ">Back to game</button>
+      <button class="clear-button ">Clear Scores</button>
+      </section>
 
-      <ul id = high-score-list></ul>
-      
     </main>
     <script src="./scripts/questions.js"></script>
     <script src="./scripts/logic.js"></script>
