@@ -32,15 +32,19 @@ scoresButton.classList.add("hidden")
   timerCount = 60;
   startButton.disabled = true;
     var a1 = document.createElement("button");
+    a1.setAttribute("id", "a1");
     a1.setAttribute("class", "a1 button");
     quizAnswer.appendChild(a1);
     var a2 = document.createElement("button");
+    a2.setAttribute("id", "a2");
     a2.setAttribute("class", "a2 button");
     quizAnswer.appendChild(a2);
     var a3 = document.createElement("button");
+    a3.setAttribute("id", "a3");
     a3.setAttribute("class", "a3 button");
     quizAnswer.appendChild(a3);
     var a4 = document.createElement("button");
+    a4.setAttribute("id", "a4");
     a4.setAttribute("class", "a4 button");
     quizAnswer.appendChild(a4);
   getQuestion()
@@ -75,7 +79,7 @@ function checkCorrect(){
     // if choice matches correct answer display correct then call next question
   quizAnswer.addEventListener("click", function(event) {
       var userChoice = event.target;
-      userAnswer = userChoice.getAttribute("class")
+      userAnswer = userChoice.getAttribute("id")
       console.log(userAnswer);
       if (questions[i].correctAnswer === userAnswer) {
           message.textContent = "CORRECT!"
