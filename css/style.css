@@ -4,12 +4,12 @@ body{
     flex-direction: column;
     min-height: 100vh;
      text-align: center;
-     background-color:
+     
     
 }
 main{
     flex: 1 0 auto;
-    ;
+    
 
 }
 header{
