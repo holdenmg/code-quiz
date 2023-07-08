@@ -147,7 +147,7 @@ function storeScores() {
 
 scoreForm.addEventListener("submit", function(event) {
   event.preventDefault();
-  var scoreText = scoreInput.value.trim(); + " Score: " + playerScore;
+  var scoreText = scoreInput.value.trim() + " Score: " + playerScore;
   scores.push(scoreText);
   //scoreInput.value = ""
   storeScores();
