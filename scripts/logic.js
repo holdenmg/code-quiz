@@ -5,6 +5,14 @@ var quizAnswer = document.querySelector(".quiz-answers");
 var title = document.querySelector(".title");
 var subtitle = document.querySelector(".subtitle");
 var message = document.querySelector(".message");
+var gameWindow = document.querySelector("#game-window");
+
+var gameOverMessage = document.querySelector(".gameOverMessage")
+var hideForm = document.getElementById("hide-form")
+var scores = [];
+var initialInput = document.querySelector("#initial-text");
+var scoreForm = document.querySelector("#score-form");
+var highScoreList = document.querySelector("#high-score-list");
 var timer;
 var timerCount;
 var i = 0;
@@ -90,6 +98,48 @@ function wrong(){
   timerCount = timerCount -  10;
   message.textContent = "WRONG!";
   }
+}
+
+function renderScores() {
+  highScoreList.innerHTML = "";
+  for (var i = 0; i < scores.length; i++) {
+    var score = scores[i];
+    var li = document.createElement("li");
+    li.textContent = score;
+    li.setAttribute("data-index", i);
+    highScoreList.appendChild(li);
+  }
+}
+function init() {
+  var storedScores = JSON.parse(localStorage.getItem("scores"));
+  if (storedScores !== null) {
+    scores = storedScores;
+  }
+  renderScores();
+}
+
+
+
+
+function gameOver(){
+    
+    //stop the question function log score - read interval value and request initisald from user
+    
+    console.log("heyyy")
+    
+    //gameOverMessage.textContent = "That's all!";
+    gameWindow.classList.add("hidden");
+    hideForm.classList.add("show");
+    
+   // gameOverMessage = document.createElement("h4");
+    //quizQuestion.appendChild(gameOverMessage);
+    //gameOverMessage.textContent = "Your score is: " + timerCount;
+    //clearInterval(timer);
+
+ //write response and time remaining value to highscortes
+    
+ // ask if you want to play again
+ 
 }
 startButton.addEventListener("click", startQuiz);
 checkCorrect();

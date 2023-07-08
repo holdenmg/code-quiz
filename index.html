@@ -14,7 +14,7 @@
       <a href="highscores.html">VIEW HIGH SCORES</a>
     </header>
     <main>
-      <section>
+      <section id = game-window>
         <h1 class= "title">Code Quiz</h1>
         <h4 class="subtitle">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</h4>
         <button class="start-button">Start Quiz</button>
@@ -25,12 +25,20 @@
         <div>
           <h2 class="message"></h2>
         </div>
-
       </section>
+      <div id = "hide-form" class = "hidden">  
+        <form id="score-form" method="POST">
+          <label for="initals-text">Enter Initials: </label>
+          <input type="text"  name="todo-text" id="todo-text" />
+        </form>
+      </div>
+
+      <ul id = high-score-list></ul>
+      
     </main>
     <script src="./scripts/questions.js"></script>
     <script src="./scripts/logic.js"></script>
-    <script src="./scripts/highscore.js"></script>
+    
    
   </body>
 </html>
