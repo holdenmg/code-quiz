@@ -21,7 +21,7 @@ var timerCount;
 var i = 0;
 
 
- //write response and time remaining value to highscortes
+ 
 function startQuiz(){
 //on press of start, call start timer and call getQuestion to display first question
 startButton.style.display = "none"
@@ -30,7 +30,6 @@ subtitle.style.display = "none"
 timerElement.classList.remove("hidden")
 scoresButton.classList.add("hidden")
   timerCount = 60;
-  // Prevents start button from being clicked when round is in progress
   startButton.disabled = true;
     var a1 = document.createElement("button");
     a1.setAttribute("class", "a1");
@@ -63,7 +62,7 @@ function startTimer(){
 }
 
 function getQuestion(){
-    //pull next question from questions array and then check if user choice is correct
+    //pull next question from questions array 
     
   document.querySelector(".quiz-question").innerHTML = questions[i].question 
   document.querySelector(".a1").innerHTML ="1. " + questions[i].a1
@@ -108,6 +107,7 @@ function wrong(){
 function gameOver(){
   //hide game window and display score input form
   playerScore = timerCount;
+  clearInterval(timer);
   gameWindow.classList.add("hidden");
    hideForm.classList.add("show");
    timerElement.classList.add("hidden")
